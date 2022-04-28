@@ -12,7 +12,13 @@
     font-weight: 900;
     padding-left: 10px;
 }
+#playerHand-wrapper{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
 #card{
+    margin: 2px;
     display: flex;
     flex-direction: column;
     width: 100px;
