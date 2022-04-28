@@ -1,0 +1,18 @@
+#card{
+    display: flex;
+    flex-direction: column;
+    width: 125px;
+    height: 200px;
+    border: 2px solid black;
+    justify-content: space-between;
+}
+#card .left {
+    padding: 0rem .5rem;
+    align-items: flex-start;
+    color: red;
+}
+#card .right {
+    justify-content: flex-end;
+    align-self: flex-end;
+    padding: 0rem .5rem;
+}
