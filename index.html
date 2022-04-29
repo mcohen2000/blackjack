@@ -11,8 +11,8 @@
 <body>
     <h1>BlackJack</h1>
     <div id="wallet-wrapper">
-        <p>Balance: $0</p>
-        <p>Cards left: 104</p>
+        <p id="playerMoney">Balance: $0</p>
+        <p id="cardsRemaining">Cards left: 104</p>
     </div>
     <div className="content-wrapper">
 
@@ -33,7 +33,7 @@
 
         </div>
         <h2>Player's Hand:</h2>
-        <h3>Score: 0</h3>
+        <h3 id="playerScore">Score: 0</h3>
         <div id="playerHand-wrapper">
             <div id="card">
                 <p class="left">
@@ -79,5 +79,6 @@
             <button id="quitButton">Quit</button>
         </div>
     </div>
+    <script src="./index.js"></script>
 </body>
 </html>

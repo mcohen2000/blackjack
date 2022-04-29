@@ -1,12 +1,37 @@
-let input = prompt('Type a command to interact with the list:').toLowerCase();
 let playerHand = [];
 let playerMoney;
+let playerMoneyDisplay = document.querySelector('#playerMoney');
+let joinButton = document.querySelector('#joinButton');
+joinButton.addEventListener('click', function (e){
+    console.log('--------Joining Game--------');
+    playerMoney = parseInt(prompt('How much money would you like to deposit for chips?'));
+    playerMoneyDisplay.innerText = `Balance: $${playerMoney}`;
+})
+let dealButton = document.querySelector('#dealButton');
+dealButton.addEventListener('click', function (e){
+    console.log('--------Deal--------');
+
+})
+let hitButton = document.querySelector('#hitButton');
+hitButton.addEventListener('click', function (e){
+    console.log('--------Hit--------');
+
+})
+let standButton = document.querySelector('#standButton');
+standButton.addEventListener('click', function (e){
+    console.log('--------Stand--------');
+    
+})
+
+
+
 let playerBet;
 let dealerHand = [];
+let dealerScore = 0;
 let cardDeck = ['1heart', '2heart', '3heart', '4heart', '5heart', '6heart', '7heart', '8heart', '9heart', '10heart', '10Jheart', '10Qheart', '10Kheart', '1diamond', '2diamond', '3diamond', '4diamond', '5diamond', '6diamond', '7diamond', '8diamond', '9diamond', '10diamond', '10Jdiamond', '10Qdiamond', '10Kdiamond', '1spade', '2spade', '3spade', '4spade', '5spade', '6spade', '7spade', '8spade', '9spade', '10spade', '10Jspade', '10Qspade', '10Kspade', '1club', '2club', '3club', '4club', '5club', '6club', '7club', '8club', '9club', '10club', '10Jclub', '10Qclub', '10Kclub', '1heart', '2heart', '3heart', '4heart', '5heart', '6heart', '7heart', '8heart', '9heart', '10heart', '10Jheart', '10Qheart', '10Kheart', '1diamond', '2diamond', '3diamond', '4diamond', '5diamond', '6diamond', '7diamond', '8diamond', '9diamond', '10diamond', '10Jdiamond', '10Qdiamond', '10Kdiamond', '1spade', '2spade', '3spade', '4spade', '5spade', '6spade', '7spade', '8spade', '9spade', '10spade', '10Jspade', '10Qspade', '10Kspade', '1club', '2club', '3club', '4club', '5club', '6club', '7club', '8club', '9club', '10club', '10Jclub', '10Qclub', '10Kclub'];
 let cardsRemaining = cardDeck.length;
-let playerScore = 0;
-let dealerScore = 0;
+let cardsRemainingDisplay = document.querySelector('#cardsRemaining');
+cardsRemainingDisplay.innerText = `Cards left: ${cardsRemaining}`;
 function drawCard(deck) {
     let newCard = cardDeck.splice( Math.floor(Math.random()*cardDeck.length), 1 );
     playerHand.push(newCard);
