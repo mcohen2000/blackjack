@@ -22,6 +22,12 @@
     flex-direction: row;
     flex-wrap: wrap;
 }
+#dealerHandDisplay{
+    overflow-wrap: break-word;
+}
+#playerHandDisplay{
+    overflow-wrap: break-word;
+}
 #card{
     margin: 2px;
     display: flex;
