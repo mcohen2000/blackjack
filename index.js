@@ -10,18 +10,107 @@ let cardDeck = ['1heart', '2heart', '3heart', '4heart', '5heart', '6heart', '7he
 let cardsRemaining = cardDeck.length;
 let cardsRemainingDisplay = document.querySelector('#cardsRemaining');
 cardsRemainingDisplay.innerText = `Cards left: ${cardsRemaining}`;
-function drawCard(deck) {
+function drawCard() {
     let newCard = cardDeck.splice( Math.floor(Math.random()*cardDeck.length), 1 );
+    const newCardDisplay = document.createElement("div");
+    newCardDisplay.id = "card";
+
+    
+    const cardIcon = document.createElement("i");
+    if (newCard[0].includes("heart")){
+        newCardDisplay.style.color = 'red';
+        cardIcon.className += "bi bi-suit-heart-fill";
+    } else if (newCard[0].includes("spade")){
+        newCardDisplay.style.color = 'black';
+        cardIcon.className += "bi bi-suit-spade-fill";
+    } else if (newCard[0].includes("diamond")){
+        newCardDisplay.style.color = 'red';
+        cardIcon.className += "bi bi-suit-diamond-fill";
+    } else if (newCard[0].includes("club")){
+        newCardDisplay.style.color = 'black';
+        cardIcon.className += "bi bi-suit-club-fill";
+    }
+
+    const cardLeft = document.createElement("p");
+    if (parseInt(newCard) == 1 || parseInt(newCard) == 11) {
+        cardLeft.innerHTML = "A";
+        cardLeft.innerHTML += cardIcon.outerHTML;
+    } else{
+        cardLeft.innerHTML = parseInt(newCard);
+        cardLeft.innerHTML += cardIcon.outerHTML;
+    }
+    cardLeft.classList.toggle("left");
+
+    const cardRight = document.createElement("p");
+    if (parseInt(newCard) == 1 || parseInt(newCard) == 11) {
+        cardRight.innerHTML += cardIcon.outerHTML;
+        cardRight.innerHTML += "A";
+    } else{
+        cardRight.innerHTML += cardIcon.outerHTML;
+        cardRight.innerHTML += parseInt(newCard);
+    }
+    cardRight.classList.toggle("right");
+
+
     playerHand.push(newCard);
     cardsRemaining -= 1;
     cardsRemainingDisplay.innerText = `Cards left: ${cardsRemaining}`;
-}
-function dealerDrawCard(deck) {
+    newCardDisplay.append(cardLeft);
+    newCardDisplay.append(cardRight);
+    const playerHandWrapper = document.querySelector("#playerHand-wrapper");
+    playerHandWrapper.append(newCardDisplay);
+} 
+function dealerDrawCard() {
     if (dealerScore<17) {
         let newCard = cardDeck.splice( Math.floor(Math.random()*cardDeck.length), 1 );
+
+        const newCardDisplay = document.createElement("div");
+        newCardDisplay.id = "card";
+
+    
+        const cardIcon = document.createElement("i");
+        if (newCard[0].includes("heart")){
+            newCardDisplay.style.color = 'red';
+            cardIcon.className += "bi bi-suit-heart-fill";
+        } else if (newCard[0].includes("spade")){
+            newCardDisplay.style.color = 'black';
+            cardIcon.className += "bi bi-suit-spade-fill";
+        } else if (newCard[0].includes("diamond")){
+            newCardDisplay.style.color = 'red';
+            cardIcon.className += "bi bi-suit-diamond-fill";
+        } else if (newCard[0].includes("club")){
+            newCardDisplay.style.color = 'black';
+            cardIcon.className += "bi bi-suit-club-fill";
+        }
+
+        const cardLeft = document.createElement("p");
+        if (parseInt(newCard) == 1 || parseInt(newCard) == 11) {
+            cardLeft.innerHTML = "A";
+            cardLeft.innerHTML += cardIcon.outerHTML;
+        } else{
+            cardLeft.innerHTML = parseInt(newCard);
+            cardLeft.innerHTML += cardIcon.outerHTML;
+        }
+        cardLeft.classList.toggle("left");
+
+        const cardRight = document.createElement("p");
+        if (parseInt(newCard) == 1 || parseInt(newCard) == 11) {
+            cardRight.innerHTML += cardIcon.outerHTML;
+            cardRight.innerHTML += "A";
+        } else{
+            cardRight.innerHTML += cardIcon.outerHTML;
+            cardRight.innerHTML += parseInt(newCard);
+        }
+        cardRight.classList.toggle("right");
+
+
         dealerHand.push(newCard);
         cardsRemaining -= 1;
         cardsRemainingDisplay.innerText = `Cards left: ${cardsRemaining}`;
+        newCardDisplay.append(cardLeft);
+        newCardDisplay.append(cardRight);
+        const dealerHandWrapper = document.querySelector("#dealerHand-wrapper");
+        dealerHandWrapper.append(newCardDisplay);
     }
 }
 function calcScore(hand) {
@@ -124,7 +213,6 @@ function calcDealerScore(hand) {
         console.log('--------End of Round--------');
     } else if (dealerScore<17){
         dealerDrawCard();
-        // dealerScoreDisplay.innerText = `Score: ${dealerScore}`;
     }
     
 }

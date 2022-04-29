@@ -17,6 +17,11 @@
     flex-direction: row;
     flex-wrap: wrap;
 }
+#dealerHand-wrapper{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
 #card{
     margin: 2px;
     display: flex;
@@ -34,7 +39,6 @@
     text-align: center;
     width: 18px;
     padding-left: 10px;
-    color: red;
 }
 
 #card .right {
