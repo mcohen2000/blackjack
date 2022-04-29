@@ -35,6 +35,15 @@ function drawCard() {
     if (parseInt(newCard) == 1 || parseInt(newCard) == 11) {
         cardLeft.innerHTML = "A";
         cardLeft.innerHTML += cardIcon.outerHTML;
+    } else if (newCard[0].includes("10K")){
+        cardLeft.innerHTML = "K";
+        cardLeft.innerHTML += cardIcon.outerHTML;
+    } else if (newCard[0].includes("10Q")){
+        cardLeft.innerHTML = "Q";
+        cardLeft.innerHTML += cardIcon.outerHTML;
+    } else if (newCard[0].includes("10J")){
+        cardLeft.innerHTML = "J";
+        cardLeft.innerHTML += cardIcon.outerHTML;
     } else{
         cardLeft.innerHTML = parseInt(newCard);
         cardLeft.innerHTML += cardIcon.outerHTML;
@@ -45,6 +54,15 @@ function drawCard() {
     if (parseInt(newCard) == 1 || parseInt(newCard) == 11) {
         cardRight.innerHTML += cardIcon.outerHTML;
         cardRight.innerHTML += "A";
+    } else if (newCard[0].includes("10K")){
+        cardRight.innerHTML += cardIcon.outerHTML;
+        cardRight.innerHTML += "K";
+    } else if (newCard[0].includes("10Q")){
+        cardRight.innerHTML += cardIcon.outerHTML;
+        cardRight.innerHTML += "Q";
+    } else if (newCard[0].includes("10J")){
+        cardRight.innerHTML += cardIcon.outerHTML;
+        cardRight.innerHTML += "J";
     } else{
         cardRight.innerHTML += cardIcon.outerHTML;
         cardRight.innerHTML += parseInt(newCard);
@@ -87,6 +105,15 @@ function dealerDrawCard() {
         if (parseInt(newCard) == 1 || parseInt(newCard) == 11) {
             cardLeft.innerHTML = "A";
             cardLeft.innerHTML += cardIcon.outerHTML;
+        } else if (newCard[0].includes("10K")){
+            cardLeft.innerHTML = "K";
+            cardLeft.innerHTML += cardIcon.outerHTML;
+        } else if (newCard[0].includes("10Q")){
+            cardLeft.innerHTML = "Q";
+            cardLeft.innerHTML += cardIcon.outerHTML;
+        } else if (newCard[0].includes("10J")){
+            cardLeft.innerHTML = "J";
+            cardLeft.innerHTML += cardIcon.outerHTML;
         } else{
             cardLeft.innerHTML = parseInt(newCard);
             cardLeft.innerHTML += cardIcon.outerHTML;
@@ -97,6 +124,15 @@ function dealerDrawCard() {
         if (parseInt(newCard) == 1 || parseInt(newCard) == 11) {
             cardRight.innerHTML += cardIcon.outerHTML;
             cardRight.innerHTML += "A";
+        } else if (newCard[0].includes("10K")){
+            cardRight.innerHTML += cardIcon.outerHTML;
+            cardRight.innerHTML += "K";
+        } else if (newCard[0].includes("10Q")){
+            cardRight.innerHTML += cardIcon.outerHTML;
+            cardRight.innerHTML += "Q";
+        } else if (newCard[0].includes("10J")){
+            cardRight.innerHTML += cardIcon.outerHTML;
+            cardRight.innerHTML += "J";
         } else{
             cardRight.innerHTML += cardIcon.outerHTML;
             cardRight.innerHTML += parseInt(newCard);
