@@ -41,8 +41,14 @@ function calcScore(hand) {
                 console.log('ACE set to 1 by changing array, then subtracting.');
         }
     }
+    let playerHandDisplay = document.querySelector('#playerHandDisplay');
+    playerHandDisplay.innerText = `Hand: ${playerHand}`
     let playerScoreDisplay = document.querySelector('#playerScore');
     playerScoreDisplay.innerText = `Score: ${playerScore}`;
+    let dealerHandDisplay = document.querySelector('#dealerHandDisplay');
+    dealerHandDisplay.innerText = `Hand: Hidden Card + ${dealerHand[1]}`
+    let dealerScoreDisplay = document.querySelector('#dealerScore');
+    dealerScoreDisplay.innerText = `Score: ${parseInt(dealerHand[1])}`;
     if (playerScore==21) {
         console.log(`BLACKJACK! Your payout is $${playerBet*1.5}!`);
         playerMoney += (playerBet*1.5);
@@ -77,6 +83,8 @@ function calcDealerScore(hand) {
             console.log('ACE set to 1 by changing array, then subtracting.')
         }
     }
+    let dealerHandDisplay = document.querySelector('#dealerHandDisplay');
+    dealerHandDisplay.innerText = `Hand: ${dealerHand}`
     let dealerScoreDisplay = document.querySelector('#dealerScore');
     dealerScoreDisplay.innerText = `Score: ${dealerScore}`;
     if (dealerScore>=17 && dealerScore<=21 && playerScore == dealerScore){
