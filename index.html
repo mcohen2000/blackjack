@@ -12,12 +12,13 @@
     <h1>BlackJack</h1>
     <div id="wallet-wrapper">
         <p id="playerMoney">Balance: $0</p>
+        <p id="playerBet">Current Bet: $0</p>
         <p id="cardsRemaining">Cards left: 104</p>
     </div>
     <div className="content-wrapper">
 
-        <h2>Dealer's Hand:</h2>
-        <h3>Score: 0</h3>
+        <h2 id="dealerHand">Dealer's Hand:</h2>
+        <h3 id="dealerScore">Score: 0</h3>
         <div id="dealerHand-wrapper">
             <div id="card">
                 <p class="left">
@@ -32,7 +33,7 @@
             </div>
 
         </div>
-        <h2>Player's Hand:</h2>
+        <h2 id="playerHand">Player's Hand:</h2>
         <h3 id="playerScore">Score: 0</h3>
         <div id="playerHand-wrapper">
             <div id="card">
