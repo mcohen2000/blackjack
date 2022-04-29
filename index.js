@@ -263,6 +263,10 @@ let dealButton = document.querySelector('#dealButton');
 dealButton.addEventListener('click', function (e){
     console.log('--------Deal--------');
     playerHand = [];
+    const playerHandWrapper = document.querySelector("#playerHand-wrapper");
+    playerHandWrapper.innerHTML = "";
+    const dealerHandWrapper = document.querySelector("#dealerHand-wrapper");
+    dealerHandWrapper.innerHTML = "";
     dealerHand = [];
     dealerScore = 0;
     playerBet = 0;
