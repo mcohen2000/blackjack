@@ -84,7 +84,9 @@ function dealerDrawCard() {
 
         const newCardDisplay = document.createElement("div");
         newCardDisplay.id = "card";
-
+        if (dealerHand.length==0){
+            newCardDisplay.className += 'hiddenCard';
+        }
     
         const cardIcon = document.createElement("i");
         if (newCard[0].includes("heart")){
@@ -146,6 +148,9 @@ function dealerDrawCard() {
         newCardDisplay.append(cardLeft);
         newCardDisplay.append(cardRight);
         const dealerHandWrapper = document.querySelector("#dealerHand-wrapper");
+        if (dealerHand.length==0){
+            newCardDisplay.classList.toggle("hiddenCard");
+        }
         dealerHandWrapper.append(newCardDisplay);
     }
 }
@@ -302,6 +307,8 @@ standButton.addEventListener('click', function (e){
     console.log(`Your current hand is: ${playerHand} Total: ${playerScore}`);
     console.log(`There are ${cardsRemaining} cards left.`);
     console.log('--------Stand Executed--------');
+    const dealerHiddenCard = document.querySelector(".hiddenCard");
+    dealerHiddenCard.classList.toggle('hiddenCard');
     while (dealerScore<17){
         calcDealerScore(dealerHand);
     };
