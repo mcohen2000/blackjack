@@ -330,29 +330,28 @@ standButton.addEventListener('click', function (e){
     };
 })
 resetButton.addEventListener('click', function (e){
-    let playerHand = [];
-    let playerHandDisplay = document.querySelector('#playerHand');
-    let playerMoney = 0;
-    let playerMoneyDisplay = document.querySelector('#playerMoney');
+    playerHand = [];
+    playerHandDisplay = document.querySelector('#playerHand');
+    playerMoney = 0;
+    playerMoneyDisplay = document.querySelector('#playerMoney');
     playerMoneyDisplay.innerText = `Balance: $${playerMoney}`;
-    let playerBet = 0;
-    let playerBetDisplay = document.querySelector('#playerBet');
+    playerBet = 0;
+    playerBetDisplay = document.querySelector('#playerBet');
     playerBetDisplay.innerText = `Current Bet: $0`;
-    let dealerHand = [];
-    let dealerScore = 0;
-    let cardDeck = ['1heart', '2heart', '3heart', '4heart', '5heart', '6heart', '7heart', '8heart', '9heart', '10heart', '10Jheart', '10Qheart', '10Kheart', '1diamond', '2diamond', '3diamond', '4diamond', '5diamond', '6diamond', '7diamond', '8diamond', '9diamond', '10diamond', '10Jdiamond', '10Qdiamond', '10Kdiamond', '1spade', '2spade', '3spade', '4spade', '5spade', '6spade', '7spade', '8spade', '9spade', '10spade', '10Jspade', '10Qspade', '10Kspade', '1club', '2club', '3club', '4club', '5club', '6club', '7club', '8club', '9club', '10club', '10Jclub', '10Qclub', '10Kclub', '1heart', '2heart', '3heart', '4heart', '5heart', '6heart', '7heart', '8heart', '9heart', '10heart', '10Jheart', '10Qheart', '10Kheart', '1diamond', '2diamond', '3diamond', '4diamond', '5diamond', '6diamond', '7diamond', '8diamond', '9diamond', '10diamond', '10Jdiamond', '10Qdiamond', '10Kdiamond', '1spade', '2spade', '3spade', '4spade', '5spade', '6spade', '7spade', '8spade', '9spade', '10spade', '10Jspade', '10Qspade', '10Kspade', '1club', '2club', '3club', '4club', '5club', '6club', '7club', '8club', '9club', '10club', '10Jclub', '10Qclub', '10Kclub'];
-    let cardsRemaining = cardDeck.length;
-    let cardsRemainingDisplay = document.querySelector('#cardsRemaining');
+    dealerHand = [];
+    dealerScore = 0;
+    cardDeck = ['1heart', '2heart', '3heart', '4heart', '5heart', '6heart', '7heart', '8heart', '9heart', '10heart', '10Jheart', '10Qheart', '10Kheart', '1diamond', '2diamond', '3diamond', '4diamond', '5diamond', '6diamond', '7diamond', '8diamond', '9diamond', '10diamond', '10Jdiamond', '10Qdiamond', '10Kdiamond', '1spade', '2spade', '3spade', '4spade', '5spade', '6spade', '7spade', '8spade', '9spade', '10spade', '10Jspade', '10Qspade', '10Kspade', '1club', '2club', '3club', '4club', '5club', '6club', '7club', '8club', '9club', '10club', '10Jclub', '10Qclub', '10Kclub', '1heart', '2heart', '3heart', '4heart', '5heart', '6heart', '7heart', '8heart', '9heart', '10heart', '10Jheart', '10Qheart', '10Kheart', '1diamond', '2diamond', '3diamond', '4diamond', '5diamond', '6diamond', '7diamond', '8diamond', '9diamond', '10diamond', '10Jdiamond', '10Qdiamond', '10Kdiamond', '1spade', '2spade', '3spade', '4spade', '5spade', '6spade', '7spade', '8spade', '9spade', '10spade', '10Jspade', '10Qspade', '10Kspade', '1club', '2club', '3club', '4club', '5club', '6club', '7club', '8club', '9club', '10club', '10Jclub', '10Qclub', '10Kclub'];
+    cardsRemaining = cardDeck.length;
+    cardsRemainingDisplay = document.querySelector('#cardsRemaining');
     cardsRemainingDisplay.innerText = `Cards left: ${cardsRemaining}`;
     const playerHandWrapper = document.querySelector("#playerHand-wrapper");
     playerHandWrapper.innerHTML = "";
     const dealerHandWrapper = document.querySelector("#dealerHand-wrapper");
     dealerHandWrapper.innerHTML = "";
     playerHandDisplay = document.querySelector('#playerHandDisplay');
-    playerHandDisplay.innerText = `Hand: `
+    playerHandDisplay.innerText = `Hand:`
     let playerScoreDisplay = document.querySelector('#playerScore');
     playerScoreDisplay.innerText = `Score: 0`;
-    let dealerHandDisplay = document.querySelector('#dealerHandDisplay');
     dealerHandDisplay.innerText = `Hand:`
     let dealerScoreDisplay = document.querySelector('#dealerScore');
     dealerScoreDisplay.innerText = `Score: 0`;
