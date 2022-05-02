@@ -343,6 +343,7 @@ resetButton.addEventListener('click', function (e){
     playerMoney = 0;
     playerMoneyDisplay = document.querySelector('#playerMoney');
     playerMoneyDisplay.innerText = `Balance: $${playerMoney}`;
+    playerBalanceDisplay.innerText = `Balance: $${playerMoney}`;
     playerBet = 0;
     playerBetDisplay = document.querySelector('#playerBet');
     playerBetDisplay.innerText = `Current Bet: $0`;
