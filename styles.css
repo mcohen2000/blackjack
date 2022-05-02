@@ -25,6 +25,16 @@
 #dealerHandDisplay{
     overflow-wrap: break-word;
 }
+#balance-wrapper{
+    position: fixed;
+    bottom: 30px;
+    right: 5px;
+    width: 100px;
+    /* padding: 1rem; */
+    text-align: center;
+    background-color: red;
+    border: 1px solid black;
+}
 #playerHandDisplay{
     overflow-wrap: break-word;
 }

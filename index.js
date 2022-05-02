@@ -2,6 +2,7 @@ let playerHand = [];
 let playerHandDisplay = document.querySelector('#playerHand');
 let playerMoney;
 let playerMoneyDisplay = document.querySelector('#playerMoney');
+let playerBalanceDisplay = document.querySelector('#playerBalanceDisplay');
 let playerBet;
 let playerBetDisplay = document.querySelector('#playerBet');
 let dealerHand = [];
@@ -186,6 +187,7 @@ function calcScore(hand) {
         hitButton.disabled = true;
         standButton.disabled = true;
         playerMoneyDisplay.innerText = `Balance: $${playerMoney}`;
+        playerBalanceDisplay.innerText = `Balance: $${playerMoney}`;
         playerBetDisplay.innerText = `Current Bet: $0`;
         console.log(`Balance: $${playerMoney}`);
         console.log('--------End of Round--------');
@@ -197,6 +199,7 @@ function calcScore(hand) {
         hitButton.disabled = true;
         standButton.disabled = true;
         playerMoneyDisplay.innerText = `Balance: $${playerMoney}`;
+        playerBalanceDisplay.innerText = `Balance: $${playerMoney}`;
         playerBetDisplay.innerText = `Current Bet: $0`;
         console.log(`Balance: $${playerMoney}`);
         console.log('--------End of Round--------');
@@ -229,6 +232,7 @@ function calcDealerScore(hand) {
         console.log(`Balance: $${playerMoney}`);
         dealerScoreDisplay.innerText = `Score: ${dealerScore}`;
         playerMoneyDisplay.innerText = `Balance: $${playerMoney}`;
+        playerBalanceDisplay.innerText = `Balance: $${playerMoney}`;
         playerBetDisplay.innerText = `Current Bet: $0`;
         console.log('--------End of Round--------');
     } else if (dealerScore>=17 && dealerScore<=21 && dealerScore>playerScore){
@@ -237,6 +241,7 @@ function calcDealerScore(hand) {
         dealerScoreDisplay.innerText = `Score: ${dealerScore}`;
         playerMoney -= playerBet;
         playerMoneyDisplay.innerText = `Balance: $${playerMoney}`;
+        playerBalanceDisplay.innerText = `Balance: $${playerMoney}`;
         playerBetDisplay.innerText = `Current Bet: $0`;
         console.log(`Balance: $${playerMoney}`);
         console.log('--------End of Round--------');
@@ -246,6 +251,7 @@ function calcDealerScore(hand) {
         dealerScoreDisplay.innerText = `Score: ${dealerScore}`;
         playerMoney += playerBet;
         playerMoneyDisplay.innerText = `Balance: $${playerMoney}`;
+        playerBalanceDisplay.innerText = `Balance: $${playerMoney}`;
         playerBetDisplay.innerText = `Current Bet: $0`;
         console.log(`Balance: $${playerMoney}`);
         console.log('--------End of Round--------');
@@ -255,6 +261,7 @@ function calcDealerScore(hand) {
         console.log(`CONGRATS! You won $${playerBet}!`);
         playerMoney += playerBet;
         playerMoneyDisplay.innerText = `Balance: $${playerMoney}`;
+        playerBalanceDisplay.innerText = `Balance: $${playerMoney}`;
         playerBetDisplay.innerText = `Current Bet: $0`;
         console.log(`You have $${playerMoney} remaining.`);
         console.log('--------End of Round--------');
@@ -277,6 +284,7 @@ depositButton.addEventListener('click', function (e){
     console.log('--------Joining Game--------');
     playerMoney = parseInt(prompt('How much money would you like to deposit for chips?'));
     playerMoneyDisplay.innerText = `Balance: $${playerMoney}`;
+    playerBalanceDisplay.innerText = `Balance: $${playerMoney}`;
 })
 dealButton.addEventListener('click', function (e){
     console.log('--------Deal--------');
