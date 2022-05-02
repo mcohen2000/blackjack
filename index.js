@@ -182,6 +182,9 @@ function calcScore(hand) {
     if (playerScore==21) {
         console.log(`BLACKJACK! Your payout is $${playerBet*1.5}!`);
         playerMoney += (playerBet*1.5);
+        dealButton.disabled = false;
+        hitButton.disabled = true;
+        standButton.disabled = true;
         playerMoneyDisplay.innerText = `Balance: $${playerMoney}`;
         playerBetDisplay.innerText = `Current Bet: $0`;
         console.log(`Balance: $${playerMoney}`);
@@ -190,6 +193,9 @@ function calcScore(hand) {
     else if (playerScore>21) {
         console.log(`You lost $${playerBet}, better luck next time.`);
         playerMoney -= playerBet;
+        dealButton.disabled = false;
+        hitButton.disabled = true;
+        standButton.disabled = true;
         playerMoneyDisplay.innerText = `Balance: $${playerMoney}`;
         playerBetDisplay.innerText = `Current Bet: $0`;
         console.log(`Balance: $${playerMoney}`);
@@ -258,15 +264,25 @@ function calcDealerScore(hand) {
     
 }
 
-let joinButton = document.querySelector('#joinButton');
-joinButton.addEventListener('click', function (e){
+let depositButton = document.querySelector('#depositButton');
+let dealButton = document.querySelector('#dealButton');
+let hitButton = document.querySelector('#hitButton');
+let standButton = document.querySelector('#standButton');
+let resetButton = document.querySelector('#resetButton');
+dealButton.disabled = true;
+hitButton.disabled = true;
+standButton.disabled = true;
+depositButton.addEventListener('click', function (e){
+    dealButton.disabled = false;
     console.log('--------Joining Game--------');
     playerMoney = parseInt(prompt('How much money would you like to deposit for chips?'));
     playerMoneyDisplay.innerText = `Balance: $${playerMoney}`;
 })
-let dealButton = document.querySelector('#dealButton');
 dealButton.addEventListener('click', function (e){
     console.log('--------Deal--------');
+    dealButton.disabled = true;
+    hitButton.disabled = false;
+    standButton.disabled = false;
     playerHand = [];
     const playerHandWrapper = document.querySelector("#playerHand-wrapper");
     playerHandWrapper.innerHTML = "";
@@ -283,13 +299,11 @@ dealButton.addEventListener('click', function (e){
     drawCard(cardDeck);
     dealerDrawCard(cardDeck);
     calcScore(playerHand);
-    // playerScoreDisplay.innerText = `Score: ${playerScore}`;
     console.log(`There are ${cardsRemaining} cards left.`);
     console.log(`Your current hand is: ${playerHand} Total: ${playerScore}`);
     console.log(`Dealer's hand is: 1 Hidden Card + ${dealerHand[1]}`);
     console.log('--------Deal Executed--------');
 })
-let hitButton = document.querySelector('#hitButton');
 hitButton.addEventListener('click', function (e){
     console.log('--------Hit--------');
     console.log(`Current Bet: $${playerBet}`)
@@ -300,8 +314,10 @@ hitButton.addEventListener('click', function (e){
     console.log('--------Hit Executed--------');
 
 })
-let standButton = document.querySelector('#standButton');
 standButton.addEventListener('click', function (e){
+    dealButton.disabled = false;
+    hitButton.disabled = true;
+    standButton.disabled = true;
     console.log('--------Stand--------');
     console.log(`Current Bet: $${playerBet} Current Score: ${playerScore}`);
     console.log(`Your current hand is: ${playerHand} Total: ${playerScore}`);
@@ -312,4 +328,32 @@ standButton.addEventListener('click', function (e){
     while (dealerScore<17){
         calcDealerScore(dealerHand);
     };
+})
+resetButton.addEventListener('click', function (e){
+    let playerHand = [];
+    let playerHandDisplay = document.querySelector('#playerHand');
+    let playerMoney = 0;
+    let playerMoneyDisplay = document.querySelector('#playerMoney');
+    playerMoneyDisplay.innerText = `Balance: $${playerMoney}`;
+    let playerBet = 0;
+    let playerBetDisplay = document.querySelector('#playerBet');
+    playerBetDisplay.innerText = `Current Bet: $0`;
+    let dealerHand = [];
+    let dealerScore = 0;
+    let cardDeck = ['1heart', '2heart', '3heart', '4heart', '5heart', '6heart', '7heart', '8heart', '9heart', '10heart', '10Jheart', '10Qheart', '10Kheart', '1diamond', '2diamond', '3diamond', '4diamond', '5diamond', '6diamond', '7diamond', '8diamond', '9diamond', '10diamond', '10Jdiamond', '10Qdiamond', '10Kdiamond', '1spade', '2spade', '3spade', '4spade', '5spade', '6spade', '7spade', '8spade', '9spade', '10spade', '10Jspade', '10Qspade', '10Kspade', '1club', '2club', '3club', '4club', '5club', '6club', '7club', '8club', '9club', '10club', '10Jclub', '10Qclub', '10Kclub', '1heart', '2heart', '3heart', '4heart', '5heart', '6heart', '7heart', '8heart', '9heart', '10heart', '10Jheart', '10Qheart', '10Kheart', '1diamond', '2diamond', '3diamond', '4diamond', '5diamond', '6diamond', '7diamond', '8diamond', '9diamond', '10diamond', '10Jdiamond', '10Qdiamond', '10Kdiamond', '1spade', '2spade', '3spade', '4spade', '5spade', '6spade', '7spade', '8spade', '9spade', '10spade', '10Jspade', '10Qspade', '10Kspade', '1club', '2club', '3club', '4club', '5club', '6club', '7club', '8club', '9club', '10club', '10Jclub', '10Qclub', '10Kclub'];
+    let cardsRemaining = cardDeck.length;
+    let cardsRemainingDisplay = document.querySelector('#cardsRemaining');
+    cardsRemainingDisplay.innerText = `Cards left: ${cardsRemaining}`;
+    const playerHandWrapper = document.querySelector("#playerHand-wrapper");
+    playerHandWrapper.innerHTML = "";
+    const dealerHandWrapper = document.querySelector("#dealerHand-wrapper");
+    dealerHandWrapper.innerHTML = "";
+    playerHandDisplay = document.querySelector('#playerHandDisplay');
+    playerHandDisplay.innerText = `Hand: `
+    let playerScoreDisplay = document.querySelector('#playerScore');
+    playerScoreDisplay.innerText = `Score: 0`;
+    let dealerHandDisplay = document.querySelector('#dealerHandDisplay');
+    dealerHandDisplay.innerText = `Hand:`
+    let dealerScoreDisplay = document.querySelector('#dealerScore');
+    dealerScoreDisplay.innerText = `Score: 0`;
 })
