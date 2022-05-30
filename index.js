@@ -333,9 +333,11 @@ standButton.addEventListener('click', function (e){
     console.log('--------Stand Executed--------');
     const dealerHiddenCard = document.querySelector(".hiddenCard");
     dealerHiddenCard.classList.toggle('hiddenCard');
-    while (dealerScore<17){
-        calcDealerScore(dealerHand);
-    };
+    setTimeout(function(){
+        while (dealerScore<17){
+            calcDealerScore(dealerHand);
+        };
+    }, 1000);
 })
 resetButton.addEventListener('click', function (e){
     playerHand = [];
