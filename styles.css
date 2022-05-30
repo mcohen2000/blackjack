@@ -58,15 +58,15 @@ body{
     align-items: flex-start;
     -webkit-animation: slide-in-bck-right 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
               animation: slide-in-bck-right 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-}
-#card .left {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    width: 18px;
-    padding-left: 10px;
-}
-
+            }
+            #card .left {
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                width: 18px;
+                padding-left: 10px;
+            }
+            
 #card .right {
     display: flex;
     flex-direction: column;
@@ -74,6 +74,10 @@ body{
     width: 18px;
     align-self: flex-end;
     padding-right: 10px;
+}
+#card.hiddenCard {
+    background-color: red;
+    
 }
 .hiddenCard i {
     opacity: 0;
