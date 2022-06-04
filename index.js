@@ -1,15 +1,19 @@
 let playerHand = [];
-let playerHandDisplay = document.querySelector('#playerHand');
 let playerMoney;
-let playerMoneyDisplay = document.querySelector('#playerMoney');
-let playerBalanceDisplay = document.querySelector('#playerBalanceDisplay');
 let playerBet;
-let playerBetDisplay = document.querySelector('#playerBet');
+const playerHandDisplay = document.querySelector('#playerHandDisplay');
+const playerHandWrapper = document.querySelector("#playerHand-wrapper");
+const playerMoneyDisplay = document.querySelector('#playerMoney');
+const playerBalanceDisplay = document.querySelector('#playerBalanceDisplay');
+const playerBetDisplay = document.querySelector('#playerBet');
+const playerScoreDisplay = document.querySelector('#playerScore');
 let dealerHand = [];
 let dealerScore = 0;
+const dealerHandWrapper = document.querySelector("#dealerHand-wrapper");
+const dealerScoreDisplay = document.querySelector('#dealerScore');
 let cardDeck = ['1heart', '2heart', '3heart', '4heart', '5heart', '6heart', '7heart', '8heart', '9heart', '10heart', '10Jheart', '10Qheart', '10Kheart', '1diamond', '2diamond', '3diamond', '4diamond', '5diamond', '6diamond', '7diamond', '8diamond', '9diamond', '10diamond', '10Jdiamond', '10Qdiamond', '10Kdiamond', '1spade', '2spade', '3spade', '4spade', '5spade', '6spade', '7spade', '8spade', '9spade', '10spade', '10Jspade', '10Qspade', '10Kspade', '1club', '2club', '3club', '4club', '5club', '6club', '7club', '8club', '9club', '10club', '10Jclub', '10Qclub', '10Kclub', '1heart', '2heart', '3heart', '4heart', '5heart', '6heart', '7heart', '8heart', '9heart', '10heart', '10Jheart', '10Qheart', '10Kheart', '1diamond', '2diamond', '3diamond', '4diamond', '5diamond', '6diamond', '7diamond', '8diamond', '9diamond', '10diamond', '10Jdiamond', '10Qdiamond', '10Kdiamond', '1spade', '2spade', '3spade', '4spade', '5spade', '6spade', '7spade', '8spade', '9spade', '10spade', '10Jspade', '10Qspade', '10Kspade', '1club', '2club', '3club', '4club', '5club', '6club', '7club', '8club', '9club', '10club', '10Jclub', '10Qclub', '10Kclub'];
 let cardsRemaining = cardDeck.length;
-let cardsRemainingDisplay = document.querySelector('#cardsRemaining');
+const cardsRemainingDisplay = document.querySelector('#cardsRemaining');
 cardsRemainingDisplay.innerText = `Cards left: ${cardsRemaining}`;
 function drawCard() {
     let newCard = cardDeck.splice( Math.floor(Math.random()*cardDeck.length), 1 );
@@ -76,7 +80,6 @@ function drawCard() {
     cardsRemainingDisplay.innerText = `Cards left: ${cardsRemaining}`;
     newCardDisplay.append(cardLeft);
     newCardDisplay.append(cardRight);
-    const playerHandWrapper = document.querySelector("#playerHand-wrapper");
     playerHandWrapper.append(newCardDisplay);
 } 
 function dealerDrawCard() {
@@ -148,7 +151,6 @@ function dealerDrawCard() {
         cardsRemainingDisplay.innerText = `Cards left: ${cardsRemaining}`;
         newCardDisplay.append(cardLeft);
         newCardDisplay.append(cardRight);
-        const dealerHandWrapper = document.querySelector("#dealerHand-wrapper");
         if (dealerHand.length==0){
             newCardDisplay.classList.toggle("hiddenCard");
         }
@@ -172,13 +174,9 @@ function calcScore(hand) {
                 console.log('ACE set to 1 by changing array, then subtracting.');
         }
     }
-    let playerHandDisplay = document.querySelector('#playerHandDisplay');
     playerHandDisplay.innerText = `Hand: ${playerHand}`
-    let playerScoreDisplay = document.querySelector('#playerScore');
     playerScoreDisplay.innerText = `Score: ${playerScore}`;
-    let dealerHandDisplay = document.querySelector('#dealerHandDisplay');
-    dealerHandDisplay.innerText = `Hand: Hidden Card + ${dealerHand[1]}`
-    let dealerScoreDisplay = document.querySelector('#dealerScore');
+    dealerHandDisplay.innerText = `Hand: Hidden Card + ${dealerHand[1]}`;
     dealerScoreDisplay.innerText = `Score: ${parseInt(dealerHand[1])}`;
     if (playerScore==21) {
         console.log(`BLACKJACK! Your payout is $${playerBet*1.5}!`);
@@ -222,9 +220,7 @@ function calcDealerScore(hand) {
             console.log('ACE set to 1 by changing array, then subtracting.')
         }
     }
-    let dealerHandDisplay = document.querySelector('#dealerHandDisplay');
-    dealerHandDisplay.innerText = `Hand: ${dealerHand}`
-    let dealerScoreDisplay = document.querySelector('#dealerScore');
+    dealerHandDisplay.innerText = `Hand: ${dealerHand}`;
     dealerScoreDisplay.innerText = `Score: ${dealerScore}`;
     if (dealerScore>=17 && dealerScore<=21 && playerScore == dealerScore){
         console.log(`Dealer's current hand is: ${dealerHand} Total: ${dealerScore}`);
@@ -271,11 +267,11 @@ function calcDealerScore(hand) {
     
 }
 
-let depositButton = document.querySelector('#depositButton');
-let dealButton = document.querySelector('#dealButton');
-let hitButton = document.querySelector('#hitButton');
-let standButton = document.querySelector('#standButton');
-let resetButton = document.querySelector('#resetButton');
+const depositButton = document.querySelector('#depositButton');
+const dealButton = document.querySelector('#dealButton');
+const hitButton = document.querySelector('#hitButton');
+const standButton = document.querySelector('#standButton');
+const resetButton = document.querySelector('#resetButton');
 dealButton.disabled = true;
 hitButton.disabled = true;
 standButton.disabled = true;
@@ -292,9 +288,7 @@ dealButton.addEventListener('click', function (e){
     hitButton.disabled = false;
     standButton.disabled = false;
     playerHand = [];
-    const playerHandWrapper = document.querySelector("#playerHand-wrapper");
     playerHandWrapper.innerHTML = "";
-    const dealerHandWrapper = document.querySelector("#dealerHand-wrapper");
     dealerHandWrapper.innerHTML = "";
     dealerHand = [];
     dealerScore = 0;
@@ -341,29 +335,20 @@ standButton.addEventListener('click', function (e){
 })
 resetButton.addEventListener('click', function (e){
     playerHand = [];
-    playerHandDisplay = document.querySelector('#playerHand');
     playerMoney = 0;
-    playerMoneyDisplay = document.querySelector('#playerMoney');
     playerMoneyDisplay.innerText = `Balance: $${playerMoney}`;
     playerBalanceDisplay.innerText = `Balance: $${playerMoney}`;
     playerBet = 0;
-    playerBetDisplay = document.querySelector('#playerBet');
     playerBetDisplay.innerText = `Current Bet: $0`;
     dealerHand = [];
     dealerScore = 0;
     cardDeck = ['1heart', '2heart', '3heart', '4heart', '5heart', '6heart', '7heart', '8heart', '9heart', '10heart', '10Jheart', '10Qheart', '10Kheart', '1diamond', '2diamond', '3diamond', '4diamond', '5diamond', '6diamond', '7diamond', '8diamond', '9diamond', '10diamond', '10Jdiamond', '10Qdiamond', '10Kdiamond', '1spade', '2spade', '3spade', '4spade', '5spade', '6spade', '7spade', '8spade', '9spade', '10spade', '10Jspade', '10Qspade', '10Kspade', '1club', '2club', '3club', '4club', '5club', '6club', '7club', '8club', '9club', '10club', '10Jclub', '10Qclub', '10Kclub', '1heart', '2heart', '3heart', '4heart', '5heart', '6heart', '7heart', '8heart', '9heart', '10heart', '10Jheart', '10Qheart', '10Kheart', '1diamond', '2diamond', '3diamond', '4diamond', '5diamond', '6diamond', '7diamond', '8diamond', '9diamond', '10diamond', '10Jdiamond', '10Qdiamond', '10Kdiamond', '1spade', '2spade', '3spade', '4spade', '5spade', '6spade', '7spade', '8spade', '9spade', '10spade', '10Jspade', '10Qspade', '10Kspade', '1club', '2club', '3club', '4club', '5club', '6club', '7club', '8club', '9club', '10club', '10Jclub', '10Qclub', '10Kclub'];
     cardsRemaining = cardDeck.length;
-    cardsRemainingDisplay = document.querySelector('#cardsRemaining');
     cardsRemainingDisplay.innerText = `Cards left: ${cardsRemaining}`;
-    const playerHandWrapper = document.querySelector("#playerHand-wrapper");
     playerHandWrapper.innerHTML = "";
-    const dealerHandWrapper = document.querySelector("#dealerHand-wrapper");
     dealerHandWrapper.innerHTML = "";
-    playerHandDisplay = document.querySelector('#playerHandDisplay');
     playerHandDisplay.innerText = `Hand:`
-    let playerScoreDisplay = document.querySelector('#playerScore');
     playerScoreDisplay.innerText = `Score: 0`;
-    dealerHandDisplay.innerText = `Hand:`
-    let dealerScoreDisplay = document.querySelector('#dealerScore');
+    dealerHandDisplay.innerText = `Hand:`;
     dealerScoreDisplay.innerText = `Score: 0`;
 })
