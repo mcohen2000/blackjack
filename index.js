@@ -194,6 +194,9 @@ function calcScore(hand) {
         console.log(`You lost $${playerBet}, better luck next time.`);
         playerMoney -= playerBet;
         dealButton.disabled = false;
+        if (playerMoney<=0){
+            dealButton.disabled = true;
+        }
         hitButton.disabled = true;
         standButton.disabled = true;
         playerMoneyDisplay.innerText = `Balance: $${playerMoney}`;
@@ -236,6 +239,9 @@ function calcDealerScore(hand) {
         console.log(`Dealer wins! You lost $${playerBet}, better luck next time.`);
         dealerScoreDisplay.innerText = `Score: ${dealerScore}`;
         playerMoney -= playerBet;
+        if (playerMoney<=0){
+            dealButton.disabled = true;
+        }
         playerMoneyDisplay.innerText = `Balance: $${playerMoney}`;
         playerBalanceDisplay.innerText = `Balance: $${playerMoney}`;
         playerBetDisplay.innerText = `Current Bet: $0`;
@@ -283,28 +289,33 @@ depositButton.addEventListener('click', function (e){
     playerBalanceDisplay.innerText = `Balance: $${playerMoney}`;
 })
 dealButton.addEventListener('click', function (e){
-    console.log('--------Deal--------');
-    dealButton.disabled = true;
-    hitButton.disabled = false;
-    standButton.disabled = false;
-    playerHand = [];
-    playerHandWrapper.innerHTML = "";
-    dealerHandWrapper.innerHTML = "";
-    dealerHand = [];
-    dealerScore = 0;
     playerBet = 0;
     playerBet = parseInt(prompt('How much money would you like to bet on this hand?'));
-    playerBetDisplay.innerText = `Current Bet: $${playerBet}`;
-    console.log(`Current Bet: $${playerBet}`);
-    drawCard(cardDeck);
-    dealerDrawCard(cardDeck);
-    drawCard(cardDeck);
-    dealerDrawCard(cardDeck);
-    calcScore(playerHand);
-    console.log(`There are ${cardsRemaining} cards left.`);
-    console.log(`Your current hand is: ${playerHand} Total: ${playerScore}`);
-    console.log(`Dealer's hand is: 1 Hidden Card + ${dealerHand[1]}`);
-    console.log('--------Deal Executed--------');
+    if (playerBet <= playerMoney){
+        console.log('--------Deal--------');
+        dealButton.disabled = true;
+        hitButton.disabled = false;
+        standButton.disabled = false;
+        playerHand = [];
+        playerHandWrapper.innerHTML = "";
+        dealerHandWrapper.innerHTML = "";
+        dealerHand = [];
+        dealerScore = 0;
+        playerBetDisplay.innerText = `Current Bet: $${playerBet}`;
+        console.log(`Current Bet: $${playerBet}`);
+        drawCard(cardDeck);
+        dealerDrawCard(cardDeck);
+        drawCard(cardDeck);
+        dealerDrawCard(cardDeck);
+        calcScore(playerHand);
+        console.log(`There are ${cardsRemaining} cards left.`);
+        console.log(`Your current hand is: ${playerHand} Total: ${playerScore}`);
+        console.log(`Dealer's hand is: 1 Hidden Card + ${dealerHand[1]}`);
+        console.log('--------Deal Executed--------');
+    } else {
+        alert("Insufficient funds.");
+    }
+    
 })
 hitButton.addEventListener('click', function (e){
     console.log('--------Hit--------');
